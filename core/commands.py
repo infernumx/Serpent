@@ -1,9 +1,13 @@
 import discord
 from discord.ext import commands
 
-class Commands(cogs.Command):
+class Commands(commands.Cog):
 	def __init__(self, bot):
-		pass
+		self.bot = bot
+
+	@commands.command()
+	async def test(self, ctx):
+		print(ctx.message)
 
 
 def setup(bot):
