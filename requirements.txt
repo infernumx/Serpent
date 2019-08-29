@@ -1,0 +1,4 @@
+discord.py==1.2.3
+PyMySQL==0.9.3
+APScheduler==3.6.1
+rapidjson==1.0.0
