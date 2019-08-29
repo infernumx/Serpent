@@ -8,6 +8,16 @@ bot = commands.Bot(command_prefix=';')
 async def on_ready():
 	print('Bot initialized.')
 
+extensions = [
+	'core.commands'
+]
+
+for ext in extensions:
+	try:
+		bot.load_extension(ext)
+	except Exception as e:
+		print('{}: {}'.format(type(e).__name__, e))
+
 with open('config.json') as f:
 	j = json.loads(f.read())
 	bot.run(j['bot']['token'])
