@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import rapidjson
+from tools import extensions
 
 bot = commands.Bot(command_prefix=';')
 
@@ -18,8 +18,7 @@ for ext in extensions:
 	except Exception as e:
 		print('{}: {}'.format(type(e).__name__, e))
 
-with open('config.json') as f:
-	j = rapidjson.loads(f.read())
-	bot.run(j['bot']['token'])
+config = extensions.load_json('config.json')
+bot.run(config['bot']['token'])
 
 # Invite link: https://discordapp.com/oauth2/authorize?&client_id=616492312473632768&scope=bot&permissions=8

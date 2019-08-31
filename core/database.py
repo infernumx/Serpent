@@ -1,12 +1,19 @@
 import pymysql.cursors
 
+cached_connections = {}
+
 class DatabaseConnection:
 	def __init__(self, credentials):
-		print('Creating database connection to "{}": {}@{}'.format(credentials['db'], credentials['user'], credentials['bind_address']))
-		self.connection = pymysql.connect(**credentials)
-		
-		if not self.query("""SHOW TABLES LIKE 'bot_listener'"""):
-			self.first_time_setup()
+		if cached_connections.get(credentials['db']):
+			self.connection = cached_connections[credentials['db']]
+		else:
+			print('Creating database connection to "{}": {}@{}'.format(credentials['db'], credentials['user'], credentials['bind_address']))
+			self.connection = pymysql.connect(**credentials)
+
+			cached_connections[credentials['db']] = self
+
+			if not self.query("""SHOW TABLES LIKE 'bot_listener'"""):
+				self.first_time_setup()
 
 	def first_time_setup(self):
 		print('Performing first time setup...')

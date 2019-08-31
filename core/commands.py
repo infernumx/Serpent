@@ -1,11 +1,10 @@
 import discord
 from discord.ext import commands
 from core.database import DatabaseConnection
-import rapidjson
+from tools import extensions
 
-with open('config.json') as f:
-	config = rapidjson.loads(f.read())
-	database = DatabaseConnection(config.get("database"))
+config = extensions.load_json('config.json')
+database = DatabaseConnection(config["database"])
 
 class Commands(commands.Cog):
 	def __init__(self, bot):
@@ -14,7 +13,6 @@ class Commands(commands.Cog):
 	@commands.command()
 	async def test(self, ctx):
 		print(ctx.message)
-
 
 def setup(bot):
 	bot.add_cog(Commands(bot))
