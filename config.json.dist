@@ -4,8 +4,9 @@
 	},
 	"database": {
 		"user": "",
-		"pass": "",
-		"host": "",
-		"port": ""
+		"passwd": "",
+		"db",
+		"bind_address": "",
+		"port": 3306
 	}
 }
