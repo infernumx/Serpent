@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import rapidjson as json
+import rapidjson
 
 bot = commands.Bot(command_prefix=';')
 
@@ -19,7 +19,7 @@ for ext in extensions:
 		print('{}: {}'.format(type(e).__name__, e))
 
 with open('config.json') as f:
-	j = json.loads(f.read())
+	j = rapidjson.loads(f.read())
 	bot.run(j['bot']['token'])
 
 # Invite link: https://discordapp.com/oauth2/authorize?&client_id=616492312473632768&scope=bot&permissions=8
