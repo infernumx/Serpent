@@ -20,5 +20,3 @@ for ext in exts:
 
 config = extensions.load_json('config.json')
 bot.run(config['bot']['token'])
-
-# Invite link: https://discordapp.com/oauth2/authorize?&client_id=616492312473632768&scope=bot&permissions=8
