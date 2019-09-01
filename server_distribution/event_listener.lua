@@ -5,7 +5,15 @@ local commands = {
 			online[#online+1] = player:getName()
 		end
 		return (#online > 0) and table.concat(online, '\n') or 'Nobody'
-	end}
+	end},
+	uptime = {rawargs = false, callback = (
+		function()
+			local uptime = getWorldUpTime()
+			local hours = math.floor(uptime / 3600)
+			local minutes = math.floor((uptime - (3600 * hours)) / 60)
+			return ("%s hour%s and %s minute%s."):format(hours, (hours ~= 1 and "s" or ""), minutes, (minutes ~= 1 and "s" or ""))
+		end
+	)},
 }
 
 do

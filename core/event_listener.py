@@ -7,7 +7,8 @@ class EventListener(commands.Cog):
 		self.bot = bot
 		self.db_conn = db_conn
 		self.commands = {
-			'online': {'title': 'Players Online', 'callback': self.command_finish, 'channelId': 616497056147701767}
+			'online': {'title': 'Players Online', 'callback': self.command_finish, 'channelId': 616497056147701767},
+			'uptime': {'title': 'Server Uptime', 'callback': self.command_finish, 'channelId': 616497056147701767}
 		}
 
 		self.start(interval=1)

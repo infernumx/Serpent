@@ -20,5 +20,9 @@ class Commands(commands.Cog):
 	async def online(self, ctx):
 		self.enqueue('online')
 
+	@commands.command()
+	async def uptime(self, ctx):
+		self.enqueue('uptime')
+
 def setup(bot):
 	bot.add_cog(Commands(bot))
