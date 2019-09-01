@@ -8,11 +8,11 @@ bot = commands.Bot(command_prefix=';')
 async def on_ready():
 	print('Bot initialized.')
 
-extensions = [
+exts = [
 	'core.commands'
 ]
 
-for ext in extensions:
+for ext in exts:
 	try:
 		bot.load_extension(ext)
 	except Exception as e:
