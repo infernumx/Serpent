@@ -17,6 +17,11 @@ class EventListener(commands.Cog):
                 'title': 'Server Uptime',
                 'callback': self.command_finish,
                 'channelId': 616497056147701767
+            },
+            'death': {
+                'title': 'Player Death',
+                'callback': self.command_death,
+                'channelId': 616497056147701767
             }
         }
 
@@ -45,6 +50,20 @@ class EventListener(commands.Cog):
 
     async def command_finish(self, result, title, channelId):
         embed = discord.Embed(color=0xff0000, title=title, description=result)
+        await self.bot.get_channel(id=channelId).send(embed=embed)
+
+    async def command_death(self, result, title, channelId):
+        args = result.split(',')
+        player_name = args[0]
+        player_level = args[1].strip()
+        killer_name = args[2].strip()
+        timestamp = ', '.join([s.strip() for s in args[3:]])
+        embed = discord.Embed(color=0xff0000, title=title)
+        embed.add_field(name='Player',
+                        value='{} (Level {})'.format(player_name,
+                                                     player_level))
+        embed.add_field(name='Killer', value=killer_name)
+        embed.set_footer(text=timestamp)
         await self.bot.get_channel(id=channelId).send(embed=embed)
 
     def get_queue(self):

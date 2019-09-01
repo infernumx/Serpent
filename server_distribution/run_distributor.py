@@ -6,6 +6,10 @@ distributables = [
     {
         'code': 'dofile("data/lib/core/event_listener.lua")',
         'dest': '../../data/lib/core/core.lua'
+    },
+    {
+        'src': 'bot_onDeath.lua',
+        'dest': '../../data/scripts'
     }
 ]
 
