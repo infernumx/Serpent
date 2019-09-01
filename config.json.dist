@@ -5,7 +5,7 @@
 	"database": {
 		"user": "",
 		"passwd": "",
-		"db",
+		"db": "",
 		"bind_address": "",
 		"port": 3306
 	}
