@@ -1,6 +1,6 @@
-import rapidjson
+import json
 
 
 def load_json(filename):
     with open(filename) as f:
-        return rapidjson.loads(f.read())
+        return json.loads(f.read())
